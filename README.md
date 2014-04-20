@@ -1,12 +1,13 @@
-jQuery highlightTextarea
+jQuery antihighlgiht
 ========================
 
 Overview
 --------
-highlightTextarea is a jQuery plugin which allows you to highlight words and sentences inside of &lt;textarea&gt; and &lt;input&gt; elements. Words are defined in a jQuery array and you can customize highlight color and case sensitivity. The highlighting updates itself when typing in the &lt;textarea&gt; and follows scroll and resizing (with jQuery-UI).
+antihighlight is a jQuery plugin based on <a href="https://github.com/mistic100/jQuery-highlightTextarea">jQuery.highlightTextArea</a>. It allows you to highlight words and sentences inside of &lt;textarea&gt; and &lt;input&gt; elements.
 
-Documentation, Features and Demos
----------------------------------
-Full details and documentation can be found on the project page here:
+It accepts a whitelist of letters and words. If any letters in the textarea are not on an
+approved list, those are highlighted. For remaining words with all valid letters, any words
+not on the whitelist are highlighted.
 
-<http://www.strangeplanet.fr/work/jquery-highlighttextarea/>
+This library is used to make leveled early reading books, where it is important not to use any
+unfamiliar letters or words.
