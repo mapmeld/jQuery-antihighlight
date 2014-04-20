@@ -355,7 +355,7 @@
          */
         this.applyText = function(text) {
             text = this.html_entities(text);
-            var originalText = this.$textarea.text();
+            var originalText = text;
 
             if (this.options.letters.length > 0) {
                 replace = [];
@@ -371,11 +371,21 @@
             }
 
             if (this.options.words.length > 0) {
+                allow = [];
                 replace = [];
 
                 for (var i=0; i<this.options.words.length; i++) {
-                  replace.push(this.html_entities(this.options.words[i]));
+                  allow.push(this.html_entities(this.options.words[i].toLowerCase()));
                 }
+                
+                originalText = originalText.split(" ");
+                for(var w=0;w<originalText.length;w++){
+                  var word = originalText[w].toLowerCase();
+                  if(allow.indexOf(word) == -1 && replace.indexOf(word) == -1){
+                    replace.push(word);
+                  }
+                }
+                
                 var regParam = this.options.regParam;
                 var regColor = this.options.color;
 
