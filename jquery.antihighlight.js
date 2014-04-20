@@ -355,6 +355,20 @@
          */
         this.applyText = function(text) {
             text = this.html_entities(text);
+            var originalText = this.$textarea.text();
+
+            if (this.options.letters.length > 0) {
+                replace = [];
+
+                for (var i=0; i<this.options.letters.length; i++) {
+                  replace.push(this.html_entities(this.options.letters[i]));
+                }
+
+                text = text.replace(
+                  new RegExp('[^'+replace.join('')+'\\s]', this.options.regParam),
+                  "<span class=\"highlight\" style=\"background-color:"+this.options.color+";\">_</span>"
+                );
+            }
 
             if (this.options.words.length > 0) {
                 replace = [];
@@ -371,19 +385,6 @@
                     " <span class=\"highlight\" style=\"background-color:"+regColor+";\">$1</span> "
                   );
                 });
-            }
-
-            if (this.options.letters.length > 0) {
-                replace = [];
-
-                for (var i=0; i<this.options.letters.length; i++) {
-                  replace.push(this.html_entities(this.options.letters[i]));
-                }
-
-                text = text.replace(
-                  new RegExp('('+replace.join('|')+')', this.options.regParam),
-                  "<span class=\"highlight\" style=\"background-color:"+this.options.color+";\">$1</span>"
-                );
             }
 
             this.$highlighter.html(text);
