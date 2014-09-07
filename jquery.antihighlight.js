@@ -135,17 +135,6 @@
 
             // highlight content
             this.highlight();
-
-            // readjust for PBS layout
-            this.$main.css({
-              position: 'absolute',
-              top: this.$textarea.css("top"),
-              left: this.$textarea.css("left")
-            });
-            this.$textarea.css({
-              left: 0,
-              top: 0
-            });
         }
 
         /*
